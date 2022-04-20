@@ -6,7 +6,7 @@
       </div>
       <div class="col-sm-6">
         <h3>Quem somos</h3>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae reprehenderit quam at officiis cupiditate! Dolorum id sit non? Cum aliquam cupiditate eligendi quo praesentium veniam itaque fugit similique mollitia consequuntur!</p>
+        <p>Uma empresa de tecnologia focada em ajudar na socialização de projetos sociais em Criciuma-Sc</p>
       </div>
     </div>
   </div>
