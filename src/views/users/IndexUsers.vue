@@ -1,15 +1,13 @@
 <template>
   <div id="users" class="container">
-    <div class="row">
-      <div class="card" style="width: 18rem;" v-for="user in users" :key="user.id">
-        <div class="card-body">
-          <h5 class="card-title">{{user.name}}</h5>
-          <p class="card-text">{{user.email}}</p>
-          <p class="card-text">{{user.status}}</p>
-          <button class="botao" @click="deleted(user.id)">Excluir</button>
-        </div>
-      </div>
-    </div>
+    <ul class="list-group w-50">
+      <li class="list-group-item" v-for="user in users" :key="user.id">
+        <h4><strong>{{user.name}}</strong></h4>
+        <p>{{user.email}}</p>
+        <p>{{user.status}}</p>
+        <button class="btn btn-danger" @click="deleted(user.id)">Excluir</button>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -45,15 +43,11 @@ export default {
 </script>
 
 <style scoped>
-    .botao{
-    width: 150px;
-    border-radius: 10px;
-    color: #fff;
-    font-weight: bold;
-    background-color: #504B43;
+  ul{
+    margin: 0 auto
   }
 
-  .card{
-    margin: 10px auto;
+  li{
+    margin-top: 2%;
   }
 </style>

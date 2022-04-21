@@ -8,7 +8,7 @@
             <h5 class="card-title">{{inst.name}}</h5>
             <p class="card-text">{{inst.cnpj}}</p>
             <p class="card-text">{{inst.pix}}</p>
-            <button class="botao">Visualizar</button>
+            <a href="#" class="btn btn-primary">Visualizar</a>
           </div>
         </div>
       </div>
