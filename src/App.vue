@@ -1,67 +1,58 @@
 <template>
-  <nav>
-    <div class="link">
-      <router-link to="/">Início</router-link> | 
-      <router-link to="/users">Voluntários</router-link> |
-      <router-link to="/instituition">Instituições</router-link> |
-      <router-link to="/project">Projetos</router-link>
-    </div>
-    <div class="usuario">
-      <div><strong style="color: #504B43">NOME USUÁRIO</strong></div>
-      <div>
-        <router-link to="/user-login" class="text-usuario">Login</router-link>
-      </div>
-    </div>
-  </nav>
-  <router-view class="mt-5"/>
+  <div id="app">
+    <MenuSuperior v-if="this.superiorVisivel"/>
+    <MenuLateral  v-if="this.lateralVisivel" @deslogado="this.verificaVisibilidade(this.estaLogado())"/>
+    <router-view class="mt-5" @logado="this.verificaVisibilidade(this.estaLogado())"/>
+  </div>
 </template>
 
 <script>
+import MenuLateral from "../src/components/MenuLateral.vue";
+import VPagination from "@hennge/vue3-pagination";
+import "@hennge/vue3-pagination/dist/vue3-pagination.css";
+import MenuSuperior from "./components/MenuSuperior.vue";
+import { isLogged } from "./services/auth";
+
 export default {
-  
+  components: {
+    MenuLateral,
+    VPagination,
+    MenuSuperior,
+},
+    data(){
+      return{
+        superiorVisivel: true,
+        lateralVisivel: false,
+        headerVisivel: false,
+      }
+    },
+    mounted(){
+      if(!this.estaLogado()){
+        
+      }
+    },
+    methods: {
+      estaLogado(){
+        
+        return isLogged();
+      },
+      verificaVisibilidade(logado){
+        if (logado){
+          this.superiorVisivel = false;
+          this.lateralVisivel = true;
+          this.headerVisivel = true
+        } else {
+          this.superiorVisivel = true;
+          this.lateralVisivel = false;
+          this.headerVisivel = false
+        }
+      }
+    },
 }
 </script>
 
 <style scoped>
-#app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-nav {
-  width: 100%;
-  padding-left: 2%;
-  padding-right: 2%;
-  height:80px;
-  padding-top: 20px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #77AD78	;
-  text-decoration: none;
-}
-
-nav a.router-link-exact-active {
-  color: #7DBA84	;
-  border-bottom: 1px solid #7DBA84	;
-}
-
-nav a:hover{
-  color: #8FD694	;
-}
-
-.usuario{
-  float: right;
-}
-
-.link{
-  float: left;
-}
-
-.text-usuario{
-  font-size: 10px;
-  text-align: center;
-  padding-top: 5%;
-}
+  .header{
+    background-color: gray;
+  }
 </style>
